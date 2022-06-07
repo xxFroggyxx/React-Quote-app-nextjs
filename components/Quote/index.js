@@ -1,4 +1,5 @@
 import useSWR from "swr";
+import { useState } from "react";
 import { HiRefresh } from "react-icons/hi";
 import { Img } from "components/Img";
 import {
@@ -9,8 +10,7 @@ import {
 } from "./Quote.styles";
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
-
-export const Quote = () => {
+export const Quote = ({ isActive, setIsActive }) => {
   const { data: localApi, error } = useSWR("/api/quotes", fetcher);
   if (error) return <div>Failed to load</div>;
   if (!localApi) return <div>Loading...</div>;
@@ -26,7 +26,11 @@ export const Quote = () => {
         <p>{localApi[0].date}</p>
       </QuoteText>
       <QuoteReset>
-        <HiRefresh />
+        <HiRefresh
+          className={isActive ? "animation" : ""}
+          onClick={() => setIsActive((prev) => !prev)}
+          onAnimationEnd={() => setIsActive((prev) => !prev)}
+        />
       </QuoteReset>
     </QuoteContainer>
   );

@@ -86,8 +86,8 @@ export const QuoteReset = styled.div`
     @media only screen and (max-width: 320px) {
       padding-bottom: 20px;
     }
-    :hover {
-      animation: ${rotate} 0.35s normal ease-in-out;
-    }
+  }
+  .animation {
+    animation: ${rotate} 0.35s normal ease-in-out;
   }
 `;
