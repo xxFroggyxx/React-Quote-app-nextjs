@@ -10,7 +10,9 @@ import {
 } from "./Quote.styles";
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
-export const Quote = ({ isActive, setIsActive }) => {
+export const Quote = () => {
+  const [isActive, setIsActive] = useState(false);
+
   const { data: localApi, error } = useSWR("/api/quotes", fetcher);
   if (error) return <div>Failed to load</div>;
   if (!localApi) return <div>Loading...</div>;
