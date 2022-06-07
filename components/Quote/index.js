@@ -1,5 +1,4 @@
-import useSWR from "swr";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { HiRefresh } from "react-icons/hi";
 import { Img } from "components/Img";
 import {
@@ -9,23 +8,21 @@ import {
   QuoteText,
 } from "./Quote.styles";
 
-const fetcher = (...args) => fetch(...args).then((res) => res.json());
-export const Quote = () => {
+export const Quote = ({ localApi }) => {
   const [isActive, setIsActive] = useState(false);
-
-  const { data: localApi, error } = useSWR("/api/quotes", fetcher);
-  if (error) return <div>Failed to load</div>;
-  if (!localApi) return <div>Loading...</div>;
+  const [randomNumber, setRandomNumber] = useState(
+    Math.floor(Math.random() * localApi.length)
+  );
 
   return (
     <QuoteContainer>
       <QuoteImage>
-        <Img src={localApi[0].img} />
+        <Img src={localApi[randomNumber].img} />
       </QuoteImage>
       <QuoteText>
-        <p>{localApi[0].quote}</p>
-        <span>{localApi[0].name}</span>
-        <p>{localApi[0].date}</p>
+        <p>{localApi[randomNumber].quote}</p>
+        <span>{localApi[randomNumber].name}</span>
+        <p>{localApi[randomNumber].date}</p>
       </QuoteText>
       <QuoteReset>
         <HiRefresh
