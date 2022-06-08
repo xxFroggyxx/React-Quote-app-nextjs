@@ -10,9 +10,13 @@ import {
 
 export const Quote = ({ localApi }) => {
   const [isActive, setIsActive] = useState(false);
-  const [randomNumber, setRandomNumber] = useState(
-    Math.floor(Math.random() * localApi.length)
-  );
+  const [randomNumber, setRandomNumber] = useState(0);
+  const [lastNumber, setLastNumber] = useState(randomNumber);
+
+  const handleClick = () => {
+    setIsActive((prev) => !prev);
+    setRandomNumber(Math.floor(Math.random() * localApi.length));
+  };
 
   return (
     <QuoteContainer>
@@ -27,7 +31,7 @@ export const Quote = ({ localApi }) => {
       <QuoteReset>
         <HiRefresh
           className={isActive ? "animation" : ""}
-          onClick={() => setIsActive((prev) => !prev)}
+          onClick={() => handleClick()}
           onAnimationEnd={() => setIsActive((prev) => !prev)}
         />
       </QuoteReset>
