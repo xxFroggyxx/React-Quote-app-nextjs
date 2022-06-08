@@ -10,11 +10,6 @@ const rotate = keyframes`
 }`;
 
 export const QuoteContainer = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
   height: 335px;
   width: 670px;
   display: grid;
