@@ -78,13 +78,6 @@ export const QuoteReset = styled.div`
   & > * {
     display: flex;
   }
-
-  /* 
-    @media only screen and (max-width: 320px) {
-      padding-bottom: 20px;
-    }
-  }
- */
 `;
 
 export const ResetIcon = styled(HiRefresh)`
