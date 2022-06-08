@@ -22,7 +22,7 @@ export const Quote = ({ image, quote, name, date, onRefreshClick }) => {
   return (
     <QuoteContainer>
       <QuoteImage>
-        <Image src={image} alt="Author of the quote" width={242} height={224} />
+        <Image src={image} alt="Author of the quote" width={242} height={224} priority />
       </QuoteImage>
       <QuoteText>
         <p>{quote}</p>
