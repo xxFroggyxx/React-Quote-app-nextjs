@@ -8,30 +8,26 @@ import {
   QuoteText,
 } from "./Quote.styles";
 
-export const Quote = ({ localApi }) => {
+export const Quote = ({ image, quote, name, date, onRefreshClick }) => {
   const [isActive, setIsActive] = useState(false);
-  const [randomNumber, setRandomNumber] = useState(0);
-  const [lastNumber, setLastNumber] = useState(randomNumber);
-
   const handleClick = () => {
-    setIsActive((prev) => !prev);
-    setRandomNumber(Math.floor(Math.random() * localApi.length));
+    setIsActive(true);
+    onRefreshClick();
   };
-
   return (
     <QuoteContainer>
       <QuoteImage>
-        <Img src={localApi[randomNumber].img} />
+        <Img src={image} />
       </QuoteImage>
       <QuoteText>
-        <p>{localApi[randomNumber].quote}</p>
-        <span>{localApi[randomNumber].name}</span>
-        <p>{localApi[randomNumber].date}</p>
+        <p>{quote}</p>
+        <span>{name}</span>
+        <p>{date}</p>
       </QuoteText>
       <QuoteReset>
         <HiRefresh
           className={isActive ? "animation" : ""}
-          onClick={() => handleClick()}
+          onClick={handleClick}
           onAnimationEnd={() => setIsActive((prev) => !prev)}
         />
       </QuoteReset>
