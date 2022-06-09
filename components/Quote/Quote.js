@@ -25,12 +25,17 @@ export const Quote = ({ image, quote, name, date, onRefreshClick }) => {
         <Image src={image} alt="Author of the quote" width={242} height={224} priority />
       </QuoteImage>
       <QuoteText>
-        <p>{quote}</p>
-        <span>{name}</span>
-        <p>{date}</p>
+        <blockquote>
+          <q>{quote}</q>
+        </blockquote>
+        <figcaption>
+          <b>{name}</b>
+          <br aria-hidden />
+          <time>{date}</time>
+        </figcaption>
       </QuoteText>
-      <QuoteReset ref={resetIconRef}>
-        <ResetIcon onClick={handleClick} />
+      <QuoteReset ref={resetIconRef} onClick={handleClick} aria-label="Generate next quote">
+        <ResetIcon aria-hidden />
       </QuoteReset>
     </QuoteContainer>
   );
