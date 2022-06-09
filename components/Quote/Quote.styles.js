@@ -2,7 +2,7 @@ import styled, { css, keyframes } from 'styled-components';
 import { HiRefresh } from 'react-icons/hi';
 
 export const QuoteContainer = styled.div`
-  height: 335px;
+  min-height: 335px;
   width: 670px;
   display: grid;
   grid-template-areas: 'Image Text' 'Reset Reset';
@@ -11,7 +11,7 @@ export const QuoteContainer = styled.div`
 
   @media only screen and (max-width: 768px) {
     grid-template-areas: 'Image' 'Text' 'Reset';
-    grid-template-columns: 100%;
+    grid-template-columns: auto;
     max-width: 280px;
   }
 `;
