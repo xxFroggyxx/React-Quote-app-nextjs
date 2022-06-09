@@ -27,7 +27,7 @@ export const QuoteImage = styled.div`
   }
 
   :before {
-    content: '"';
+    content: open-quote;
     margin-top: -70px;
     margin-left: 20px;
     font-size: 120px;
@@ -36,6 +36,7 @@ export const QuoteImage = styled.div`
     z-index: 1;
   }
 
+  /* Triangle */
   :after {
     content: '';
     width: 0;
@@ -50,16 +51,27 @@ export const QuoteImage = styled.div`
   }
 `;
 
-export const QuoteText = styled.div`
+export const QuoteText = styled.figure`
   grid-area: Text;
   user-select: none;
   font-family: 'Open Sans', sans-serif;
+  min-height: 60%;
+  display: flex;
+  flex-direction: column;
+
+  blockquote {
+    margin: 0 0 1em 0;
+  }
+
+  figcaption {
+    margin-top: auto;
+  }
 
   p {
     font-weight: 300;
     margin: 0.5rem 1rem;
 
-    &:nth-child(3) {
+    &:nth-child(1) {
       margin: 0.1rem 1rem;
       color: rgba(0, 0, 0, 0.5);
       font-size: 13px;
@@ -72,8 +84,10 @@ export const QuoteText = styled.div`
   }
 `;
 
-export const QuoteReset = styled.div`
+export const QuoteReset = styled.button`
   grid-area: Reset;
+  background-color: transparent;
+  border: none;
 
   & > * {
     display: flex;
