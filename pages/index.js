@@ -1,8 +1,8 @@
-import useSWR from "swr";
-import lodash from "lodash";
-import { Quote } from "components/Quote";
-import Head from "next/head";
-import { useState } from "react";
+import useSWRImmutable from 'swr/immutable';
+import lodash from 'lodash';
+import { Quote } from 'components/Quote';
+import Head from 'next/head';
+import { useState } from 'react';
 
 const fetcher = (...args) =>
   fetch(...args)
@@ -12,7 +12,7 @@ const fetcher = (...args) =>
 export default function Home() {
   const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0);
 
-  const { data: quotes, error } = useSWR("/api/quotes", fetcher);
+  const { data: quotes, error } = useSWRImmutable('/api/quotes', fetcher);
   if (error) return <div>Failed to load</div>;
   if (!quotes) return <div>Loading...</div>;
 
