@@ -2,16 +2,12 @@
 
 <div align="center">
   <h3>
-    <a href="https://todo-app-xxfroggyxx.vercel.app/">
+    <a href="https://quote-app-next.vercel.app/">
       Demo
     </a>
     <span> | </span>
-    <a href="https://github.com/xxFroggyxx/Todo-app">
+    <a href="https://github.com/xxFroggyxx/React-Quote-app-nextjs">
       Solution
-    </a>
-    <span> | </span>
-    <a href="https://devchallenges.io/challenges/hH6PbOHBdPm6otzw2De5">
-      Challenge
     </a>
   </h3>
 </div>
