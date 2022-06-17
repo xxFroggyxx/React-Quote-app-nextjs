@@ -1,7 +1,8 @@
-import styled, { css, keyframes } from 'styled-components';
+import styled from 'styled-components';
+import { motion } from 'framer-motion';
 import { HiRefresh } from 'react-icons/hi';
 
-export const QuoteContainer = styled.div`
+export const QuoteContainer = styled(motion.div)`
   min-height: 335px;
   width: 670px;
   display: grid;

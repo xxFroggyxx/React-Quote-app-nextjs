@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import Image from 'next/image';
 import { QuoteContainer, QuoteImage, QuoteReset, QuoteText, ResetIcon } from './Quote.styles';
 
@@ -9,18 +9,27 @@ const createAnimate = (element) => {
 };
 
 export const Quote = ({ image, quote, name, date, onRefreshClick }) => {
+  const [animation, setAnimation] = useState(true);
   const resetIconRef = useRef(null);
 
   const handleClick = () => {
-    if (resetIconRef.current) {
-      createAnimate(resetIconRef.current).play();
-    }
+    setAnimation(false);
+    setTimeout(() => {
+      if (resetIconRef.current) {
+        createAnimate(resetIconRef.current).play();
+      }
 
-    onRefreshClick();
+      onRefreshClick();
+    }, 300);
   };
 
   return (
-    <QuoteContainer>
+    <QuoteContainer
+      initial={{ opacity: 0 }}
+      animate={{ opacity: animation ? 1 : 0 }}
+      transition={{ duration: 0.3 }}
+      onAnimationComplete={() => setAnimation(true)}
+    >
       <QuoteImage>
         <Image src={image} alt="Author of the quote" width={242} height={224} priority />
       </QuoteImage>
